@@ -6,7 +6,6 @@ import getResults from '../../utils/cachedImages';
 import cloudinary from '../../utils/cloudinary';
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder';
 import type { ImageProps } from '../../utils/types';
-import { CLOUDINARY_IMG_PREFIX } from '../../utils/constants';
 
 const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
   const router = useRouter();
