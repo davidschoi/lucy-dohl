@@ -12,6 +12,7 @@ import getBase64ImageUrl from '../utils/generateBlurPlaceholder';
 import type { ImageProps } from '../utils/types';
 import { useLastViewedPhoto } from '../utils/useLastViewedPhoto';
 import { CLOUDINARY_IMG_PREFIX } from '../utils/constants';
+import getResults from '../utils/cachedImages';
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
@@ -93,18 +94,26 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
         Thank you to{' '}
-        <a href="#" target="_blank" className="font-semibold hover:text-white" rel="noreferrer">
+        <a
+          href="https://www.skymeadowplace.com/"
+          target="_blank"
+          className="font-semibold hover:text-white"
+          rel="noreferrer">
           Ellen Choe
-        </a>
-        for planning and hosting our event,{' '}
-        <a href="#" target="_blank" className="font-semibold hover:text-white" rel="noreferrer">
+        </a>{' '}
+        for planning and hosting,{' '}
+        <a
+          href="https://www.twentyeightoc.com/"
+          target="_blank"
+          className="font-semibold hover:text-white"
+          rel="noreferrer">
           28 OC
-        </a>
-        for providing such a beautiful venue and{' '}
-        <a href="#" target="_blank" className="font-semibold hover:text-white" rel="noreferrer">
+        </a>{' '}
+        for a beautiful venue and{' '}
+        <a href="https://laniohye.com/" target="_blank" className="font-semibold hover:text-white" rel="noreferrer">
           Lani Ohye
         </a>{' '}
-        for the pictures.
+        for these precious photos.
       </footer>
     </>
   );
@@ -113,11 +122,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
 export default Home;
 
 export async function getStaticProps() {
-  const results = await cloudinary.v2.search
-    .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
-    .sort_by('public_id', 'desc')
-    .max_results(400)
-    .execute();
+  const results = await getResults();
 
   let reducedResults: ImageProps[] = [];
   for (let result of results.resources) {

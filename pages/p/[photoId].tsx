@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let reducedResults: ImageProps[] = [];
   for (let result of results.resources) {
     const { height, width, public_id, format } = result;
-    const id = public_id.substring(CLOUDINARY_IMG_PREFIX.length);
+    const id = parseInt(public_id.substring(CLOUDINARY_IMG_PREFIX.length));
     reducedResults.push({
       id,
       height,
