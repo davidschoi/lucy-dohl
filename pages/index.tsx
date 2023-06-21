@@ -125,16 +125,17 @@ export async function getStaticProps() {
   const results = await getResults();
 
   let reducedResults: ImageProps[] = [];
+  let i = 0;
   for (let result of results.resources) {
     const { height, width, public_id, format } = result;
-    const id = parseInt(public_id.substring(CLOUDINARY_IMG_PREFIX.length));
     reducedResults.push({
-      id,
+      id: i,
       height,
       width,
       public_id,
       format,
     });
+    i++;
   }
 
   const blurImagePromises = results.resources.map((image: ImageProps) => {
@@ -148,7 +149,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      images: reducedResults.sort((a, b) => a.id - b.id),
+      images: reducedResults,
     },
   };
 }

@@ -35,16 +35,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const results = await getResults();
 
   let reducedResults: ImageProps[] = [];
+  let i = 0;
   for (let result of results.resources) {
     const { height, width, public_id, format } = result;
-    const id = parseInt(public_id.substring(CLOUDINARY_IMG_PREFIX.length));
     reducedResults.push({
-      id,
+      id: i,
       height,
       width,
       public_id,
       format,
     });
+    i++;
   }
 
   const currentPhoto = reducedResults.find((img) => img.id === Number(context.params.photoId));
@@ -60,8 +61,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export async function getStaticPaths() {
   const results = await cloudinary.v2.search
     .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
-    .sort_by('public_id', 'desc')
-    .max_results(400)
+    .sort_by('uploaded_at', 'asc')
+    .max_results(200)
     .execute();
 
   let fullPaths = [];
