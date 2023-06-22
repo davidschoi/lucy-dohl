@@ -22,6 +22,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   const [queryParams, setQueryParams] = useState({ name: '' });
 
   useEffect(() => {
+    // This effect keeps track of the query params in the URL and stores them in a cookie
     const { name } = router.query;
     if (name) {
       saveQueryParamsToCookie(router.query);

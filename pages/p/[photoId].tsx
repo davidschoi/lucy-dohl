@@ -17,8 +17,8 @@ const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
   return (
     <>
       <Head>
-        <title>Lucy's Dohl Photo ({index})</title>
-        <meta property="og:title" content={`Lucy's Dohl photo (${index})`} />
+        <title>Lucy's Dohl Photo</title>
+        <meta property="og:title" content="Lucy's Dohl photo" />
         <meta property="og:image" content={currentPhotoUrl} />
         <meta name="twitter:image" content={currentPhotoUrl} />
       </Head>
