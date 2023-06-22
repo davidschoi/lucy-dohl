@@ -42,14 +42,12 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
     }
   }, [photoId, lastViewedPhoto, setLastViewedPhoto]);
 
-  const homePhotoUrl = `https://res.cloudinary.com/dtk8pqhhx/image/upload/c_scale,w_2560/lucy-dohl/2023_05_20-30.jpg`;
-
   return (
     <>
       <Head>
         <title>Lucy's Dohl</title>
-        <meta property="og:image" content={homePhotoUrl} />
-        <meta name="twitter:image" content={homePhotoUrl} />
+        <meta property="og:image" content={'/home-cover-photo.jpg'} />
+        <meta name="twitter:image" content={'/home-cover-photo.jpg'} />
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
         {photoId && (
@@ -100,9 +98,9 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
                     width={720}
                     height={480}
                     sizes="(max-width: 640px) 100vw,
-                  (max-width: 1280px) 50vw,
-                  (max-width: 1536px) 33vw,
-                  25vw"
+                      (max-width: 1280px) 50vw,
+                      (max-width: 1536px) 33vw,
+                      25vw"
                   />
                 </Link>
               ))}

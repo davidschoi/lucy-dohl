@@ -139,7 +139,7 @@ export default function SharedModal({
             </div>
           )}
           {/* Bottom Nav bar */}
-          {navigation && (
+          {/* {navigation && (
             <div className="fixed inset-x-0 bottom-0 z-40 overflow-hidden bg-gradient-to-b from-black/0 to-black/60">
               <motion.div initial={false} className="mx-auto mb-6 mt-6 flex aspect-[3/2] h-14">
                 <AnimatePresence initial={false}>
@@ -178,7 +178,7 @@ export default function SharedModal({
                 </AnimatePresence>
               </motion.div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </MotionConfig>
