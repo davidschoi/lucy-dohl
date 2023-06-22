@@ -26,12 +26,14 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
     }
   }, [photoId, lastViewedPhoto, setLastViewedPhoto]);
 
+  const homePhotoUrl = `https://res.cloudinary.com/dtk8pqhhx/image/upload/c_scale,w_2560/lucy-dohl/2023_05_20-30.jpg`;
+
   return (
     <>
       <Head>
         <title>Lucy's Dohl 5/20/23 Photos</title>
-        <meta property="og:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
-        <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
+        <meta property="og:image" content={homePhotoUrl} />
+        <meta name="twitter:image" content={homePhotoUrl} />
       </Head>
       <main className="mx-auto max-w-[1960px] p-4">
         {photoId && (
