@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Modal from '../components/Modal';
 import getBase64ImageUrl from '../utils/generateBlurPlaceholder';
 import type { ImageProps } from '../utils/types';
@@ -19,12 +19,19 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
 
   const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null);
 
+  const [queryParams, setQueryParams] = useState({ name: '' });
+
   useEffect(() => {
-    // Save query parameters to cookie
-    saveQueryParamsToCookie(router.query);
+    const { name } = router.query;
+    if (name) {
+      saveQueryParamsToCookie(router.query);
+      setQueryParams((prevParams) => ({ ...prevParams, name }));
+    } else {
+      const storedQueryParams = getQueryParamsFromCookie();
+      setQueryParams(storedQueryParams);
+    }
   }, [router.query]);
 
-  const queryParams = getQueryParamsFromCookie();
   const name = queryParams?.name;
 
   useEffect(() => {
@@ -53,15 +60,15 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             }}
           />
         )}
-        <div className="after:content relative flex h-[400px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/10 px-6 pb-16 pt-64 text-center text-white after:pointer-events-none after:absolute after:inset-0 after:rounded-lg md:h-[500px] lg:h-[600px] lg:pt-0">
+        <div className="after:content relative flex h-[500px] flex-col items-center justify-end gap-3 overflow-hidden rounded-lg bg-white/10 px-6 pb-16 pt-64 text-center text-white after:pointer-events-none after:absolute after:inset-0 after:rounded-lg md:h-[calc(100vh-2rem)] lg:pt-0">
           <div className="absolute inset-0 flex items-center justify-center opacity-30">
             <span className="flex max-h-full max-w-full items-center justify-center">
-              <Image src="/home-cover-photo.jpg" alt="Lucy's Dohl cover photo" width="1960" height="2832" />
+              <Image src="/home-cover-photo.jpg" alt="Lucy's Dohl cover photo" width="1960" height="2832" priority />
             </span>
             <span className="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-b from-black/0 via-black/50 to-black/100 md:h-[300px] lg:h-[400px]"></span>
           </div>
           <h1 className="mb-2 mt-6 text-base font-bold uppercase tracking-widest">Lucy's Dohl</h1>
-          <h2 className="mb-2 font-bold tracking-widest text-white">{name}</h2>
+          {name && <h2 className="mb-2 font-bold tracking-widest text-white">{name}</h2>}
           <p className="max-w-[50ch] text-white sm:max-w-[40ch]">
             Thank you so much to our beloved family and friends for celebrating Lucy's first birthday with us! We are so
             grateful for your love and support. We hope you enjoy these photos from this special day!
