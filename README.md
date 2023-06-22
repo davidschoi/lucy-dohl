@@ -10,14 +10,9 @@ This app renders an image library with [Next.js](https://nextjs.com), [Tailwind]
 cp .env.local.example .env.local
 ```
 
-2. Install dependencies
+2. Install dependencies and start server
 
 ```bash
 yarn install
 yarn dev
 ```
-
-## To Do
-
-- [ ] Add cover image with generic thank you letter.
-- [ ] Special thanks to vendors: Ellen Choe, Lani Ohye, and Twenty Eight OC.

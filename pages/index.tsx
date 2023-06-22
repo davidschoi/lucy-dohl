@@ -10,6 +10,7 @@ import type { ImageProps } from '../utils/types';
 import { useLastViewedPhoto } from '../utils/useLastViewedPhoto';
 import getResults from '../utils/cachedImages';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { getQueryParamsFromCookie, saveQueryParamsToCookie } from '../utils/cookieUtils';
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   const router = useRouter();
@@ -17,6 +18,14 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
 
   const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    // Save query parameters to cookie
+    saveQueryParamsToCookie(router.query);
+  }, [router.query]);
+
+  const queryParams = getQueryParamsFromCookie();
+  const name = queryParams?.name;
 
   useEffect(() => {
     // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
@@ -31,7 +40,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   return (
     <>
       <Head>
-        <title>Lucy's Dohl 5/20/23 Photos</title>
+        <title>Lucy's Dohl</title>
         <meta property="og:image" content={homePhotoUrl} />
         <meta name="twitter:image" content={homePhotoUrl} />
       </Head>
@@ -51,8 +60,9 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             </span>
             <span className="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-b from-black/0 via-black/50 to-black/100 md:h-[300px] lg:h-[400px]"></span>
           </div>
-          <h1 className="mb-4 mt-8 text-base font-bold uppercase tracking-widest">Lucy's Dohl 5/20/23</h1>
-          <p className="max-w-[40ch] text-white sm:max-w-[32ch]">
+          <h1 className="mb-2 mt-6 text-base font-bold uppercase tracking-widest">Lucy's Dohl</h1>
+          <h2 className="mb-2 font-bold tracking-widest text-white">{name}</h2>
+          <p className="max-w-[50ch] text-white sm:max-w-[40ch]">
             Thank you so much to our beloved family and friends for celebrating Lucy's first birthday with us! We are so
             grateful for your love and support. We hope you enjoy these photos from this special day!
           </p>
