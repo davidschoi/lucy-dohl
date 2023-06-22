@@ -5,6 +5,7 @@ import Carousel from '../../components/Carousel';
 import getResults from '../../utils/cachedImages';
 import getBase64ImageUrl from '../../utils/generateBlurPlaceholder';
 import type { ImageProps } from '../../utils/types';
+import cloudinary from '../../utils/cloudinary';
 
 const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
   const router = useRouter();
@@ -58,7 +59,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export async function getStaticPaths() {
-  const results = await getResults();
+  const results = await cloudinary.v2.search
+    .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
+    .sort_by('public_id', 'asc')
+    .max_results(200)
+    .execute();
 
   let fullPaths = [];
   for (let i = 0; i < results.resources.length; i++) {
