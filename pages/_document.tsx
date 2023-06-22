@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en" className="scroll-smooth">
         <Head>
-          <link rel="icon" href="/favicon/favicon.ico" />
+          <link rel="icon" href="/favicon.ico" />
           <meta name="description" content="See photos from Lucy's Dohl 5/20/23." />
           <meta property="og:site_name" content="lucysolchoi.com" />
           <meta property="og:description" content="See photos from Lucy's Dohl 5/20/23." />
