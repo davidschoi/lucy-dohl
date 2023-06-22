@@ -5,14 +5,14 @@ class MyDocument extends Document {
     return (
       <Html lang="en" className="scroll-smooth">
         <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <meta name="description" content="See pictures from Lucy's Dohl 5/20/23." />
+          <link rel="icon" href="/favicon/favicon.ico" />
+          <meta name="description" content="See photos from Lucy's Dohl 5/20/23." />
           <meta property="og:site_name" content="lucysolchoi.com" />
-          <meta property="og:description" content="See pictures from Lucy's Dohl 5/20/23." />
-          <meta property="og:title" content="Lucy's Dohl 5/20/23 pictures" />
+          <meta property="og:description" content="See photos from Lucy's Dohl 5/20/23." />
+          <meta property="og:title" content="Lucy's Dohl 5/20/23 photos" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Lucy's Dohl 5/20/23 pictures" />
-          <meta name="twitter:description" content="See pictures from Lucy's Dohl 5/20/23." />
+          <meta name="twitter:title" content="Lucy's Dohl 5/20/23 photos" />
+          <meta name="twitter:description" content="See photos from Lucy's Dohl 5/20/23." />
         </Head>
         <body className="bg-black antialiased">
           <Main />
