@@ -37,6 +37,7 @@ export default function SharedModal({
   });
 
   let currentImage = images ? images[index] : currentPhoto;
+  const isHorizontal = currentImage.width > currentImage.height;
 
   return (
     <MotionConfig
@@ -44,40 +45,37 @@ export default function SharedModal({
         x: { type: 'spring', stiffness: 300, damping: 30 },
         opacity: { duration: 0.2 },
       }}>
-      <div
-        className="relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto"
-        {...handlers}>
+      <div className="relative z-50 flex h-full w-full max-w-7xl items-center object-contain" {...handlers}>
         {/* Main image */}
-        <div className="w-full overflow-hidden">
-          <div className="relative flex aspect-[3/2] items-center justify-center">
-            <AnimatePresence initial={false} custom={direction}>
-              <motion.div
-                key={index}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                className="absolute">
-                <img
-                  src={`https://res.cloudinary.com/${
-                    process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-                  }/image/upload/c_scale,${navigation ? 'w_1280' : 'w_1920'}/${currentImage.public_id}.${
-                    currentImage.format
-                  }`}
-                  width={navigation ? 1280 : 1920}
-                  height={navigation ? 853 : 1280}
-                  alt={`Lucy's Dohl photo ${currentImage.id}`}
-                />
-              </motion.div>
-            </AnimatePresence>
-          </div>
+        <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={index}
+              custom={direction}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="absolute">
+              <img
+                src={`https://res.cloudinary.com/${
+                  process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+                }/image/upload/c_scale,${navigation ? 'w_1280' : 'w_1920'}/${currentImage.public_id}.${
+                  currentImage.format
+                }`}
+                width={isHorizontal ? (navigation ? 1280 : 1920) : navigation ? 853 : 1280}
+                height={isHorizontal ? (navigation ? 853 : 1280) : navigation ? 1280 : 853}
+                alt={`Lucy's Dohl photo ${currentImage.id}`}
+                className="object-contain"
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Buttons + bottom nav bar */}
         <div className="absolute inset-0 mx-auto flex max-w-7xl items-center justify-center">
           {/* Buttons */}
-          <div className="relative aspect-[3/2] max-h-full w-full">
+          <div className="relative h-full w-full">
             {navigation && (
               <>
                 {index > 0 && (
