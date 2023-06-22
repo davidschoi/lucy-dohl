@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef } from 'react';
-import Bridge from '../components/Icons/Bridge';
-import Logo from '../components/Icons/Logo';
 import Modal from '../components/Modal';
 import getBase64ImageUrl from '../utils/generateBlurPlaceholder';
 import type { ImageProps } from '../utils/types';
@@ -31,7 +29,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   return (
     <>
       <Head>
-        <title>Lucy dohl photos</title>
+        <title>Lucy's Dohl 5/20/23 Photos</title>
         <meta property="og:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
         <meta name="twitter:image" content="https://nextjsconf-pics.vercel.app/og-image.png" />
       </Head>
@@ -44,54 +42,54 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             }}
           />
         )}
-        {/* <div className="after:content relative mb-5 flex h-[629px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/10 px-6 pb-16 pt-64 text-center text-white shadow-highlight after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight lg:pt-0">
-          <div className="absolute inset-0 flex items-center justify-center opacity-20">
+        <div className="after:content relative flex h-[400px] flex-col items-center justify-end gap-4 overflow-hidden rounded-lg bg-white/10 px-6 pb-16 pt-64 text-center text-white after:pointer-events-none after:absolute after:inset-0 after:rounded-lg md:h-[500px] lg:h-[600px] lg:pt-0">
+          <div className="absolute inset-0 flex items-center justify-center opacity-30">
             <span className="flex max-h-full max-w-full items-center justify-center">
-              <Bridge />
+              <Image src="/2023_05_20-29.jpg" alt="Lucy's Dohl cover photo" width="2700" height="3900" />
             </span>
-            <span className="absolute bottom-0 left-0 right-0 h-[400px] bg-gradient-to-b from-black/0 via-black to-black"></span>
+            <span className="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-b from-black/0 via-black/50 to-black/100 md:h-[300px] lg:h-[400px]"></span>
           </div>
-          <Logo />
-          <h1 className="mb-4 mt-8 text-base font-bold uppercase tracking-widest">2022 Event Photos</h1>
-          <p className="max-w-[40ch] text-white/75 sm:max-w-[32ch]">
-            Our incredible Next.js community got together in San Francisco for our first ever in-person conference!
+          <h1 className="mb-4 mt-8 text-base font-bold uppercase tracking-widest">Lucy's Dohl 5/20/23</h1>
+          <p className="max-w-[40ch] text-white sm:max-w-[32ch]">
+            Thank you so much to our beloved family and friends for celebrating Lucy's first birthday with us! We are so
+            grateful for your love and support. We hope you enjoy these photos from this special day!
           </p>
           <a
             className="pointer z-10 mt-6 rounded-lg border border-white bg-white px-3 py-2 text-sm font-semibold text-black transition hover:bg-white/10 hover:text-white md:mt-4"
-            href="https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application"
-            target="_blank"
-            rel="noreferrer">
-            Clone and Deploy
+            href="#gallery">
+            View Gallery
           </a>
-        </div> */}
-        <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1024: 3, 1280: 4 }}>
-          <Masonry gutter="1rem">
-            {images.map(({ id, public_id, format, blurDataUrl }) => (
-              <Link
-                key={id}
-                href={`/?photoId=${id}`}
-                as={`/p/${id}`}
-                ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-                shallow
-                className="after:content group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight">
-                <Image
-                  alt={`Lucy dohl photo ${id}`}
-                  className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                  style={{ transform: 'translate3d(0, 0, 0)' }}
-                  placeholder="blur"
-                  blurDataURL={blurDataUrl}
-                  src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
-                  width={720}
-                  height={480}
-                  sizes="(max-width: 640px) 100vw,
+        </div>
+        <div id="gallery" className="pt-5">
+          <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1024: 3, 1280: 4 }}>
+            <Masonry gutter="1rem">
+              {images.map(({ id, public_id, format, blurDataUrl }) => (
+                <Link
+                  key={id}
+                  href={`/?photoId=${id}`}
+                  as={`/p/${id}`}
+                  ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
+                  shallow
+                  className="after:content group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight">
+                  <Image
+                    alt={`Lucy's Dohl photo ${id}`}
+                    className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                    style={{ transform: 'translate3d(0, 0, 0)' }}
+                    placeholder="blur"
+                    blurDataURL={blurDataUrl}
+                    src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
+                    width={720}
+                    height={480}
+                    sizes="(max-width: 640px) 100vw,
                   (max-width: 1280px) 50vw,
                   (max-width: 1536px) 33vw,
                   25vw"
-                />
-              </Link>
-            ))}
-          </Masonry>
-        </ResponsiveMasonry>
+                  />
+                </Link>
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
+        </div>
       </main>
       <footer className="p-6 text-center text-white/80 sm:p-12">
         Thank you to{' '}
@@ -100,21 +98,21 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer">
-          Ellen Choe
+          Ellen (Sky Meadow Place)
         </a>{' '}
         for planning and hosting,{' '}
+        <a href="https://laniohye.com/" target="_blank" className="font-semibold hover:text-white" rel="noreferrer">
+          Lani Ohye
+        </a>{' '}
+        for these precious photos, and{' '}
         <a
           href="https://www.twentyeightoc.com/"
           target="_blank"
           className="font-semibold hover:text-white"
           rel="noreferrer">
-          28 OC
+          Twenty Eight OC
         </a>{' '}
-        for a beautiful venue and{' '}
-        <a href="https://laniohye.com/" target="_blank" className="font-semibold hover:text-white" rel="noreferrer">
-          Lani Ohye
-        </a>{' '}
-        for these precious photos.
+        for a beautiful venue.
       </footer>
     </>
   );

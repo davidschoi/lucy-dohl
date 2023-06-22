@@ -1,4 +1,4 @@
-# Next.js, Tailwind, & Cloudinary app for Lucy's dohl
+# Next.js, Tailwind, & Cloudinary app for Lucy's Dohl
 
 This app renders an image library with [Next.js](https://nextjs.com), [Tailwind](https://tailwindcss.com), and [Cloudinary](https://cloudinary.com)
 
@@ -19,4 +19,5 @@ yarn dev
 
 ## To Do
 
-- [ ] Thank you letter to each guest
+- [ ] Add cover image with generic thank you letter.
+- [ ] Special thanks to vendors: Ellen Choe, Lani Ohye, and Twenty Eight OC.

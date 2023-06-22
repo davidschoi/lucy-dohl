@@ -75,7 +75,7 @@ export default function SharedModal({
                   width={navigation ? 1280 : 1920}
                   height={navigation ? 853 : 1280}
                   priority
-                  alt={`Lucy dohl photo ${currentImage.id}`}
+                  alt={`Lucy's Dohl photo ${currentImage.id}`}
                   onLoadingComplete={() => setLoaded(true)}
                 />
               </motion.div>
@@ -163,7 +163,7 @@ export default function SharedModal({
                         id === images.length - 1 ? 'rounded-r-md' : ''
                       } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}>
                       <Image
-                        alt={`Lucy dohl small photo ${id}`}
+                        alt={`Lucy's Dohl small photo ${id}`}
                         width={180}
                         height={120}
                         className={`${
