@@ -66,7 +66,7 @@ export default function SharedModal({
                 width={isHorizontal ? (navigation ? 1280 : 1920) : navigation ? 853 : 1280}
                 height={isHorizontal ? (navigation ? 853 : 1280) : navigation ? 1280 : 853}
                 alt={`Lucy's Dohl photo ${currentImage.id}`}
-                className="object-contain"
+                className={`object-contain ${isHorizontal ? 'w-screen' : 'h-screen'}`}
               />
             </motion.div>
           </AnimatePresence>
