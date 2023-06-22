@@ -80,7 +80,7 @@ export default function SharedModal({
               <>
                 {index > 0 && (
                   <button
-                    className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                    className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-white/50 p-3 text-black/75 backdrop-blur-lg transition hover:bg-white/75 hover:text-black focus:outline-none"
                     style={{ transform: 'translate3d(0, 0, 0)' }}
                     onClick={() => changePhotoId(index - 1)}>
                     <ChevronLeftIcon className="h-6 w-6" />
@@ -88,7 +88,7 @@ export default function SharedModal({
                 )}
                 {index + 1 < images.length && (
                   <button
-                    className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                    className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-white/50 p-3 text-black/75 backdrop-blur-lg transition hover:bg-white/75 hover:text-black focus:outline-none"
                     style={{ transform: 'translate3d(0, 0, 0)' }}
                     onClick={() => changePhotoId(index + 1)}>
                     <ChevronRightIcon className="h-6 w-6" />
@@ -96,10 +96,10 @@ export default function SharedModal({
                 )}
               </>
             )}
-            <div className="absolute right-0 top-0 flex items-center gap-2 p-3 text-white">
+            <div className="absolute right-0 top-0 flex items-center gap-2 p-3 text-black">
               <a
                 href={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${currentImage.public_id}.${currentImage.format}`}
-                className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                className="rounded-full bg-white/50 p-2 text-black/75 backdrop-blur-lg transition hover:bg-white/75 hover:text-black"
                 target="_blank"
                 title="Open fullsize version"
                 rel="noreferrer">
@@ -112,15 +112,15 @@ export default function SharedModal({
                     `${DOWNLOAD_PHOTO_IMG_PREFIX}${index}.jpg`
                   )
                 }
-                className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                className="rounded-full bg-white/50 p-2 text-black/75 backdrop-blur-lg transition hover:bg-white/75 hover:text-black"
                 title="Download fullsize version">
                 <ArrowDownTrayIcon className="h-5 w-5" />
               </button>
             </div>
-            <div className="absolute left-0 top-0 flex items-center gap-2 p-3 text-white">
+            <div className="absolute left-0 top-0 flex items-center gap-2 p-3 text-black">
               <button
                 onClick={() => closeModal()}
-                className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white">
+                className="rounded-full bg-white/50 p-2 text-black/75 backdrop-blur-lg transition hover:bg-white/75 hover:text-black">
                 {navigation ? <XMarkIcon className="h-5 w-5" /> : <ArrowUturnLeftIcon className="h-5 w-5" />}
               </button>
             </div>

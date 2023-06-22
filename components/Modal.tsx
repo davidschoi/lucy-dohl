@@ -60,7 +60,7 @@ export default function Modal({ images, onClose }: { images: ImageProps[]; onClo
         ref={overlayRef}
         as={motion.div}
         key="backdrop"
-        className="fixed inset-0 z-30 bg-black/70 backdrop-blur-2xl"
+        className="fixed inset-0 z-30 bg-white/70 backdrop-blur-2xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />

@@ -14,7 +14,7 @@ class MyDocument extends Document {
           <meta name="twitter:title" content="Lucy's Dohl photos" />
           <meta name="twitter:description" content="See photos from Lucy's Dohl." />
         </Head>
-        <body className="bg-black antialiased">
+        <body className="bg-white antialiased">
           <Main />
           <NextScript />
         </body>
