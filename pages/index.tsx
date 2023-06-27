@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import Modal from '../components/Modal';
@@ -74,8 +73,9 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             </span>
             <span className="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-b from-black/0 via-black/50 to-black/100 md:h-[300px] lg:h-[400px]"></span>
           </div>
-          {name && <h1 className="mb-2 mt-6 text-base font-bold uppercase tracking-widest">Dear {name}</h1>}
-          <p className="max-w-[50ch] tracking-wide text-white sm:max-w-[40ch]">
+          <h1 className="mb-2 mt-6 text-base font-bold uppercase tracking-widest">Lucy's Dohl</h1>
+          {name && <h2 className="mb-2 mt-6 text-base font-bold uppercase tracking-widest">Dear {name}</h2>}
+          <p className="max-w-[50ch] text-white sm:max-w-[40ch]">
             Thank you so much for celebrating Lucy's first birthday with us. We are so grateful for your gift, words of
             love, and your presence on her special day. We hope you enjoy these photos!
           </p>
@@ -89,29 +89,28 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
           <ResponsiveMasonry columnsCountBreakPoints={{ 640: 1, 768: 2, 1024: 3, 1280: 4 }}>
             <Masonry gutter="1rem">
               {images.map(({ id, public_id, format, blurDataUrl }) => (
-                <motion.div key={id} layoutId={id.toString()}>
-                  <Link
-                    href={`/?photoId=${id}`}
-                    as={`/p/${id}`}
-                    ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
-                    shallow
-                    className="after:content group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight">
-                    <Image
-                      alt={`Lucy's Dohl photo ${id}`}
-                      className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-                      style={{ transform: 'translate3d(0, 0, 0)' }}
-                      placeholder="blur"
-                      blurDataURL={blurDataUrl}
-                      src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
-                      width={720}
-                      height={480}
-                      sizes="(max-width: 640px) 100vw,
+                <Link
+                  key={id}
+                  href={`/?photoId=${id}`}
+                  as={`/p/${id}`}
+                  ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
+                  shallow
+                  className="after:content group relative block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight">
+                  <Image
+                    alt={`Lucy's Dohl photo ${id}`}
+                    className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                    style={{ transform: 'translate3d(0, 0, 0)' }}
+                    placeholder="blur"
+                    blurDataURL={blurDataUrl}
+                    src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_720/${public_id}.${format}`}
+                    width={720}
+                    height={480}
+                    sizes="(max-width: 640px) 100vw,
                       (max-width: 1280px) 50vw,
                       (max-width: 1536px) 33vw,
                       25vw"
-                    />
-                  </Link>
-                </motion.div>
+                  />
+                </Link>
               ))}
             </Masonry>
           </ResponsiveMasonry>
