@@ -45,12 +45,17 @@ export default function SharedModal({
         x: { type: 'spring', stiffness: 300, damping: 30 },
         opacity: { duration: 0.2 },
       }}>
-      <div className="relative z-50 flex h-full w-full max-w-7xl items-center object-contain" {...handlers}>
+      <div
+        className={`relative z-50 flex h-full w-full ${
+          isHorizontal ? 'max-w-7xl' : `max-w-[853px]`
+        } items-center object-contain`}
+        {...handlers}>
         {/* Main image */}
         <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={index}
+              layoutId={currentImage.id.toString()}
               custom={direction}
               variants={variants}
               initial="enter"
