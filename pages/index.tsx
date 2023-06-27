@@ -73,9 +73,8 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
             </span>
             <span className="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-b from-black/0 via-black/50 to-black/100 md:h-[300px] lg:h-[400px]"></span>
           </div>
-          <h1 className="mb-2 mt-6 text-base font-bold uppercase tracking-widest">Lucy's Dohl</h1>
-          {name && <h2 className="mb-2 mt-6 text-base font-bold uppercase tracking-widest">Dear {name}</h2>}
-          <p className="max-w-[50ch] text-white sm:max-w-[40ch]">
+          {name && <h1 className="my-2 text-base font-bold uppercase tracking-widest">Dear {name}</h1>}
+          <p className="max-w-[50ch] tracking-wide text-white sm:max-w-[40ch]">
             Thank you so much for celebrating Lucy's first birthday with us. We are so grateful for your gift, words of
             love, and your presence on her special day. We hope you enjoy these photos!
           </p>
