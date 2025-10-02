@@ -10,7 +10,7 @@ This app renders an image library with [Next.js](https://nextjs.com), [Tailwind]
 cp .env.local.example .env.local
 ```
 
-2. Install dependencies and start server
+2. Install dependencies and start server (requires Node.js 22 or later)
 
 ```bash
 yarn install
