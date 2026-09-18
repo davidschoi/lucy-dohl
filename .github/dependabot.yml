@@ -8,6 +8,10 @@ updates:
     open-pull-requests-limit: 3
     commit-message:
       prefix: chore
+    ignore:
+      # 2.7.x changed module export format and breaks CommonJS interop
+      # under Next 13 SSR page-data collection (semver-minor, but breaking).
+      - dependency-name: react-responsive-masonry
     groups:
       minor-and-patch:
         patterns: ["*"]
