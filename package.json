@@ -13,6 +13,7 @@
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "@vercel/analytics": "^1.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "cloudinary": "^1.32.0",
     "eslint-config-next": "latest",
     "framer-motion": "^7.6.4",
